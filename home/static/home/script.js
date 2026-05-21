@@ -4,7 +4,7 @@
 function switchVideo(iframeId, videoId, buttonEl) {
     const iframe = document.getElementById(iframeId);
     if (iframe) {
-        iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}`;
+        iframe.src = `https://www.youtube.com/embed/${videoId}`;
     }
     const tabsContainer = buttonEl.parentElement;
     const buttons = tabsContainer.querySelectorAll('.tab-btn');

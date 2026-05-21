@@ -132,3 +132,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Thêm dòng này vào cuối file settings.py để fix lỗi Range Not Satisfiable
+WHITENOISE_KEEP_ONLY_HASHED_FILES = True
+X_FRAME_OPTIONS = 'SAMEORIGIN'

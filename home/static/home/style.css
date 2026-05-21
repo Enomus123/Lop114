@@ -18,8 +18,10 @@ body {
 
 /* --- MAIN HEADER --- */
 .main-header {
-    background: linear-gradient(rgba(42, 111, 151, 0.4), rgba(43, 58, 66, 0.6)), 
-                url('img/binhthuong10_1.jpg') center/cover no-repeat fixed;
+    background: linear-gradient(rgba(42, 111, 151, 0.4), rgba(43, 58, 66, 0.6));
+    background-image: url('img/1.jpg');
+    background-size: cover;
+    background-position: center;
     height: 55vh;
     color: white;
     display: flex;

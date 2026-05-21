@@ -1,0 +1,1 @@
+web: gunicorn lop114.wsgi

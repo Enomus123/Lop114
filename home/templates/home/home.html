@@ -1,0 +1,432 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kỷ Niệm Tập Thể 10/4 - 11/4 ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'home/style.css' %}">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-overlay">
+            <h1>Thanh Xuân Của Tập Thể Lớp 10/4 & 11/4</h1>
+            <span class="badge">Niên khóa 2024 - 2026</span>
+            <p>Nơi cất giữ những kỉ niệm đáng nhớ của chúng mình!</p>
+        </div>
+    </header>
+
+    <main class="timeline-container">
+        <div class="timeline-line"></div>
+
+        <div class="timeline-year">Năm Lớp 10</div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-book-reader"></i></div>
+            <div class="timeline-content">
+                <span class="time-tag">Thường ngày</span>
+                <h3>Những Ngày Học Bình Thường</h3>
+                <div class="slider-wrapper">
+                    <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="image-slider">
+                        <div class="slider-track">
+                            <img src="{% static 'home/img/lop101.jpg' %}" alt="Ảnh lớp">
+                            <img src="{% static 'home/img/lop102.jpg' %}" alt="Ảnh lớp">
+                            <img src="{% static 'home/img/lop103.jpg' %}" alt="Ảnh lớp">
+                            <img src="{% static 'home/img/lop104.jpg' %}" alt="Ảnh lớp">
+                            <img src="{% static 'home/img/cuoinam101.jpg' %}" alt="Ảnh lớp">
+                            <img src="{% static 'home/img/nhom510.jpg' %}" alt="Ảnh lớp">
+                        </div>
+                    </div>
+                    <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+                    <div class="slider-counter">1 / 6</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-paint-brush"></i></div>
+            <div class="timeline-content">
+                <span class="time-tag">Đầu năm học</span>
+                <h3>Trang Trí Lớp 10</h3>
+                <div class="slider-wrapper">
+                    <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="image-slider">
+                        <div class="slider-track">
+                            <img src="{% static 'home/img/trangtri101.jpg' %}" alt="Trang trí lớp">
+                            <img src="{% static 'home/img/trangtri102.jpg' %}" alt="Trang trí lớp">
+                        </div>
+                    </div>
+                    <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+                    <div class="slider-counter">1 / 2</div>
+                </div>
+                <div class="video-playlist-wrapper">
+                    <div class="video-container">
+                        <iframe id="vid_trangtri10" src="https://www.youtube-nocookie.com/embed/XQHrNgYNRBQ" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="playlist-tabs">
+                        <button class="tab-btn active" onclick="switchVideo('vid_trangtri10', 'XQHrNgYNRBQ', this)">Bắt đầu vẽ tranh</button>
+                        <button class="tab-btn" onclick="switchVideo('vid_trangtri10', '8mex1xqlmoE', this)">Quá trình thực hiện 1</button>
+                        <button class="tab-btn" onclick="switchVideo('vid_trangtri10', 'SmLbHkxt2n4', this)">Quá trình thực hiện 2</button>
+                        <button class="tab-btn" onclick="switchVideo('vid_trangtri10', '9fV7Wk__HJA', this)">Quá trình thực hiện 3</button>
+                    </div>
+                </div>
+                <p class="description">Các bạn cùng nhau sơn lại lớp rồi trang trí, vẽ tranh rồi treo lên tường tạo nên một không gian học tập vô cùng sinh động.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-gift"></i></div>
+            <div class="timeline-content">
+                <span class="time-tag">Tháng 11</span>
+                <h3>Tri Ân 20/11 Lớp 10</h3>
+                <div class="single-image-box">
+                    <img src="{% static 'home/img/thayTay.jpg' %}" alt="Chụp hình với thầy Tây">
+                </div>
+                <p class="description"><strong>Kỷ niệm đặc biệt:</strong> Thầy Tây nghỉ hưu, cả lớp chụp hình kỷ niệm với thầy.</p>
+                <hr class="content-divider">
+                <div class="slider-wrapper">
+                    <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="image-slider">
+                        <div class="slider-track">
+                            <img src="{% static 'home/img/2011101.jpg' %}" alt="Tặng bánh kem">
+                            <img src="{% static 'home/img/2011102.jpg' %}" alt="Tặng bánh kem">
+                            <img src="{% static 'home/img/2011103.jpg' %}" alt="Tặng bánh kem">
+                            <img src="{% static 'home/img/2011104.jpg' %}" alt="Tặng bánh kem">
+                        </div>
+                    </div>
+                    <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+                    <div class="slider-counter">1 / 4</div>
+                </div>
+                <p class="description">Năm đầu chưa có kinh nghiệm nên tặng bánh kem cho thầy!</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-bus"></i></div>
+            <div class="timeline-content">
+                <span class="time-tag">Cuối Học kỳ 1</span>
+                <h3>Chuyến Đi Trải Nghiệm Lớp 10</h3>
+                <div class="slider-wrapper">
+                    <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="image-slider">
+                        <div class="slider-track">
+                            <img src="{% static 'home/img/tn101.jpg' %}" alt="Trải nghiệm">
+                            <img src="{% static 'home/img/tn102.jpg' %}" alt="Trải nghiệm">
+                            <img src="{% static 'home/img/tn103.jpg' %}" alt="Trải nghiệm">
+                            <img src="{% static 'home/img/tn104.jpg' %}" alt="Trải nghiệm">
+                        </div>
+                    </div>
+                    <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+                    <div class="slider-counter">1 / 4</div>
+                </div>
+                <div class="video-playlist-wrapper">
+                    <div class="video-container short-video">
+                        <iframe id="vid_trainghiem10" src="https://www.youtube-nocookie.com/embed/sozZxzGj1_8" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="playlist-tabs">
+                        <button class="tab-btn active" onclick="switchVideo('vid_trainghiem10', 'sozZxzGj1_8', this)">Trước giờ khởi hành</button>
+                        <button class="tab-btn" onclick="switchVideo('vid_trainghiem10', 'cvOGeq3mnoE', this)">Lên xe</button>
+                        <button class="tab-btn" onclick="switchVideo('vid_trainghiem10', 'a6MShN_RKDw', this)">Xe hư</button>
+                    </div>
+                </div>
+                <p class="description">Lần đầu cả lớp đi chơi xa cùng nhau. Dù xe có gặp sự cố nhưng các bạn vẫn vui vẻ để cùng nhau ca hát.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-music"></i></div>
+            <div class="timeline-content">
+                <span class="time-tag">Tết 2025</span>
+                <h3>Văn Nghệ Lớp 10</h3>
+                <div class="slider-wrapper">
+                    <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="image-slider">
+                        <div class="slider-track">
+                            <img src="{% static 'home/img/mua101.jpg' %}" alt="Văn nghệ">
+                            <img src="{% static 'home/img/mua102.jpg' %}" alt="Văn nghệ">
+                            <img src="{% static 'home/img/mua103.jpg' %}" alt="Văn nghệ">
+                            <img src="{% static 'home/img/mua104.jpg' %}" alt="Văn nghệ">
+                            <img src="{% static 'home/img/mua105.jpg' %}" alt="Văn nghệ">
+                        </div>
+                    </div>
+                    <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+                    <div class="slider-counter">1 / 5</div>
+                </div>
+                <div class="video-playlist-wrapper">
+                    <div class="video-container">
+                        <iframe id="vid_vannghe10" src="https://www.youtube-nocookie.com/embed/wRJTxwsMwrg" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <p class="description">Các bạn ngại múa nhưng vẫn cố gắng hết sức để hoàn thành một tiết mục thật ý nghĩa.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-utensils"></i></div>
+            <div class="timeline-content">
+                <span class="time-tag">Tết 2025</span>
+                <h3>Lễ Hội Ẩm Thực Lớp 10</h3>
+                <div class="slider-wrapper">
+                    <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="image-slider">
+                        <div class="slider-track">
+                            <img src="{% static 'home/img/amthuc101.jpg' %}" alt="Ẩm thực">
+                            <img src="{% static 'home/img/amthuc102.jpg' %}" alt="Ẩm thực">
+                            <img src="{% static 'home/img/amthuc103.jpg' %}" alt="Ẩm thực">
+                            <img src="{% static 'home/img/amthuc104.png' %}" alt="Ẩm thực">
+                        </div>
+                    </div>
+                    <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+                    <div class="slider-counter">1 / 4</div>
+                </div>
+                <div class="video-playlist-wrapper">
+                    <div class="video-container" id="container_amthuc10">
+                        <iframe id="vid_amthuc10" src="https://www.youtube-nocookie.com/embed/ifhWpd885PM" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="playlist-tabs">
+                        <button class="tab-btn active" onclick="switchVideoWithRatio('vid_amthuc10', 'ifhWpd885PM', this, 'long')">Làm đồ trang trí 1</button>
+                        <button class="tab-btn" onclick="switchVideoWithRatio('vid_amthuc10', 'Lo-MjeF6Sxg', this, 'long')">Làm đồ trang trí 2</button>
+                        <button class="tab-btn" onclick="switchVideoWithRatio('vid_amthuc10', 'zednyUWfK6M', this, 'short')">Làm gian hàng 1</button>
+                        <button class="tab-btn" onclick="switchVideoWithRatio('vid_amthuc10', 'ycrI0qX9iDc', this, 'short')">Làm gian hàng 2</button>
+                    </div>
+                </div>
+                <p class="description">Cả lớp cùng nhau trang trí và xây dựng gian hàng để chuẩn bị cho ngày hội ẩm thực. Dù gian hàng đã gặp phải một số sự cố nhưng các bạn vẫn đồng lòng sửa chữa và cuối cùng hoàn thành tốt nhiệm vụ không để đợt bán này bị lỗ.</p>
+            </div>
+        </div>
+
+        <div class="timeline-year">Năm Lớp 11</div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-trophy"></i></div>
+            <div class="timeline-content">
+                <span class="time-tag">Thường ngày</span>
+                <h3>Những Ngày Trong Năm Học</h3>
+                <div class="slider-wrapper">
+                    <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="image-slider">
+                        <div class="slider-track">
+                            <img src="{% static 'home/img/lop112.jpg' %}" alt="Cờ thi đua">
+                            <img src="{% static 'home/img/nhom511.jpg' %}" alt="Lớp học">
+                            <img src="{% static 'home/img/lop111.jpg' %}" alt="Lớp học">
+                            <img src="{% static 'home/img/lop114.jpg' %}" alt="Lớp học">
+                        </div>
+                    </div>
+                    <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+                    <div class="slider-counter">1 / 4</div>
+                </div>
+                <p class="description">Lần đầu tiên và duy nhất lớp mình đạt được cờ thi đua nhất tuần, lúc đó lớp với thầy quá là vui luônn!</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-wand-magic-sparkles"></i></div>
+            <div class="timeline-content">
+                <span class="time-tag">Đầu năm học</span>
+                <h3>Trang Trí Lớp 11</h3>
+                <div class="video-playlist-wrapper">
+                    <div class="video-container" id="container_trangtri11">
+                        <iframe id="vid_trangtri11" src="https://www.youtube-nocookie.com/embed/N02t22beCkY" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="playlist-tabs">
+                        <button class="tab-btn active" onclick="switchVideoWithRatio('vid_trangtri11', 'N02t22beCkY', this, 'short')">Trang trí đầu năm 1</button>
+                        <button class="tab-btn" onclick="switchVideoWithRatio('vid_trangtri11', 'nWurlhGw_NA', this, 'long')">Trang trí đầu năm 2</button>
+                        <button class="tab-btn" onclick="switchVideoWithRatio('vid_trangtri11', 'm8PJR563Y-Q', this, 'long')">Trang trí đầu năm 3</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-heart"></i></div>
+            <div class="timeline-content">
+                <span class="time-tag">Tháng 11</span>
+                <h3>Lễ Tri Ân 20/11 Lớp 11</h3>
+                <div class="slider-wrapper">
+                    <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="image-slider">
+                        <div class="slider-track">
+                            <img src="{% static 'home/img/2011111.jpg' %}" alt="Tặng áo thầy">
+                            <img src="{% static 'home/img/2011112.jpg' %}" alt="Ảnh kỷ niệm">
+                            <img src="{% static 'home/img/2011113.jpg' %}" alt="Ảnh kỷ niệm">
+                            <img src="{% static 'home/img/2011114.jpg' %}" alt="Ảnh kỷ niệm">
+                            <img src="{% static 'home/img/2011115.jpg' %}" alt="Ảnh kỷ niệm">
+                            <img src="{% static 'home/img/2011116.jpg' %}" alt="Ảnh kỷ niệm">
+                        </div>
+                    </div>
+                    <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+                    <div class="slider-counter">1 / 6</div>
+                </div>
+                <div class="video-playlist-wrapper">
+                    <div class="video-container short-video">
+                        <iframe src="https://www.youtube-nocookie.com/embed/rxmefYST_S0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <p class="description">Rút kinh nghiệm từ năm trước, cả lớp tặng thầy 1 cái áo sơ mi và rủ thầy chụp ảnh lưu niệm.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-theater-masks"></i></div>
+            <div class="timeline-content">
+                <span class="time-tag">Tết 2026</span>
+                <h3>Tiết Mục Nhạc Kịch</h3>
+                <div class="slider-wrapper">
+                    <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="image-slider">
+                        <div class="slider-track">
+                            <img src="{% static 'home/img/mua111.jpg' %}" alt="Nhạc kịch">
+                            <img src="{% static 'home/img/mua112.jpg' %}" alt="Nhạc kịch">
+                            <img src="{% static 'home/img/mua113.jpg' %}" alt="Nhạc kịch">
+                        </div>
+                    </div>
+                    <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+                    <div class="slider-counter">1 / 3</div>
+                </div>
+                <div class="video-playlist-wrapper">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube-nocookie.com/embed/jnmjJbNSCE4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <p class="description">Vì thấy không phù hợp với nhảy múa, các bạn đã cùng nhau thực hiện một tiết mục nhạc kịch. Cùng với sự cố gắng của cả tập thể lớp, tiết mục đã hoàn thành một cách trọn vẹn.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-store-alt"></i></div>
+            <div class="timeline-content">
+                <span class="time-tag">Tết 2026</span>
+                <h3>Lễ Hội Ẩm Thực Lớp 11</h3>
+                <div class="single-image-box">
+                    <img src="{% static 'home/img/amthuc114.jpg' %}" alt="Xiên bẩn thần thánh">
+                </div>
+                <div class="video-playlist-wrapper">
+                    <div class="video-container short-video">
+                        <iframe id="vid_amthuc11" src="https://www.youtube-nocookie.com/embed/5oUAyoi0KU" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="playlist-tabs">
+                        <button class="tab-btn active" onclick="switchVideo('vid_amthuc11', '5oUAyoi0KU', this)">Clip 1</button>
+                        <button class="tab-btn" onclick="switchVideo('vid_amthuc11', 'L1MfpenDD3c', this)">Clip 2</button>
+                        <button class="tab-btn" onclick="switchVideo('vid_amthuc11', 'n75PZZs37LU', this)">Clip 3</button>
+                    </div>
+                </div>
+                <p class="description">Các bạn cùng nhau chiên những que xiên bẩn không chỉ để bán mà còn để cùng nhau thưởng thức, lời tiền thì ít mà lời tình cảm thì nhiều &lt;3</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-glass-cheers"></i></div>
+            <div class="timeline-content">
+                <span class="time-tag">Tết sum vầy</span>
+                <h3>Vô Nhà Thầy Chủ Nhiệm Chơi</h3>
+                <div class="slider-wrapper">
+                    <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="image-slider">
+                        <div class="slider-track">
+                            <img src="{% static 'home/img/nhathay111.jpg' %}" alt="Nhà thầy">
+                            <img src="{% static 'home/img/nhathay112.jpg' %}" alt="Nhà thầy">
+                            <img src="{% static 'home/img/nhathay113.jpg' %}" alt="Nhà thầy">
+                            <img src="{% static 'home/img/nhathay114.jpg' %}" alt="Nhà thầy">
+                            <img src="{% static 'home/img/nhathay115.jpg' %}" alt="Nhà thầy">
+                            <img src="{% static 'home/img/nhathay116.jpg' %}" alt="Nhà thầy">
+                            <img src="{% static 'home/img/nhathay117.jpg' %}" alt="Nhà thầy">
+                            <img src="{% static 'home/img/nhathay118.jpg' %}" alt="Nhà thầy">
+                        </div>
+                    </div>
+                    <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+                    <div class="slider-counter">1 / 8</div>
+                </div>
+                <div class="video-playlist-wrapper">
+                    <div class="video-container short-video">
+                        <iframe id="vid_nhathay" src="https://www.youtube-nocookie.com/embed/5saH2Lpq6U0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="playlist-tabs">
+                        <button class="tab-btn active" onclick="switchVideo('vid_nhathay', '5saH2Lpq6U0', this)">Các bạn cùng nhau chuẩn bị đồ ăn</button>
+                        <button class="tab-btn" onclick="switchVideo('vid_nhathay', 'k2AnArlwCFQ', this)">Ăn thoi</button>
+                        <button class="tab-btn" onclick="switchVideo('vid_nhathay', 'PlVvwgL5uVA', this)">Cờ bạc ngày Tết</button>
+                        <button class="tab-btn" onclick="switchVideo('vid_nhathay', '8g4WwnI_uMQ', this)">Chia tay Minh Thư</button>
+                    </div>
+                </div>
+                <p class="description">Lần đầu cả lớp cùng vô nhà thầy chơi, ăn uống no nê xong cũng chơi cờ bạc ngày Tết vui hết nấc.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-campground"></i></div>
+            <div class="timeline-content">
+                <span class="time-tag">Chuyến đi đầu học kỳ 2</span>
+                <h3>Chuyến Đi Trải Nghiệm Lớp 11</h3>
+                <div class="slider-wrapper">
+                    <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="image-slider">
+                        <div class="slider-track">
+                            <img src="{% static 'home/img/tn111.jpg' %}" alt="Trải nghiệm 11">
+                            <img src="{% static 'home/img/tn112.jpg' %}" alt="Trải nghiệm 11">
+                            <img src="{% static 'home/img/tn113.jpg' %}" alt="Trải nghiệm 11">
+                        </div>
+                    </div>
+                    <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+                    <div class="slider-counter">1 / 3</div>
+                </div>
+                <div class="video-playlist-wrapper">
+                    <div class="video-container short-video">
+                        <iframe id="vid_trainghiem11" src="https://www.youtube-nocookie.com/embed/yApI11No6E8" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="playlist-tabs">
+                        <button class="tab-btn active" onclick="switchVideo('vid_trainghiem11', 'yApI11No6E8', this)">Trước khi đi</button>
+                        <button class="tab-btn" onclick="switchVideo('vid_trainghiem11', 'u7Q6-1LXfOI', this)">Lớp đi sau cùng</button>
+                        <button class="tab-btn" onclick="switchVideo('vid_trainghiem11', 'LvlrNNgliuc', this)">Được lên xe ròi nè</button>
+                    </div>
+                </div>
+                <p class="description">Một lần nữa được cùng nhau du lịch, trải nghiệm, các bạn đã mở lòng hơn và sẵn sàng hát lên bài ca mình yêu thích trên chuyến xe ấy.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-atom"></i></div>
+            <div class="timeline-content">
+                <span class="time-tag">Sáng tạo khoa học</span>
+                <h3>Ngày Hội STEM</h3>
+                <div class="single-image-box">
+                    <img src="{% static 'home/img/stem.jpg' %}" alt="Sản phẩm STEM">
+                </div>
+                <p class="description">Những sản phẩm STEM đầy tính sáng tạo và công sức nghiên cứu của lớp chúng ta.</p>
+            </div>
+        </div>
+    </main>
+
+    <section class="love-section">
+        <h3>Gửi Yêu Thương Đến Tập Thế Lớp ❤️</h3>
+        <button id="heartBtn" class="heart-button"><i class="fas fa-heart"></i> Thả Tim Ngay</button>
+        <p id="counter">Đã tích lũy được <span id="count">0</span> lượt tim thương yêu.</p>
+    </section>
+
+    <section class="letter-section">
+        <div class="letter-card">
+            <div class="letter-icon"><i class="fas fa-envelope-open-text"></i></div>
+            <h2>Gửi Tập Thể Lớp Thân Yêu...</h2>
+            <div class="letter-content-text">
+                <p>2 năm chẳng ngắn cũng chẳng dài, chúng ta đã cùng nhau trải qua những tiết học thật vui nhộn nhưng đôi khi lại vô cùng căng thẳng (tiết ngữ văn), những giờ kiểm tra, những trò chơi tập thể như đá cầu, nhảy dây, ma sói,... những buổi lao động bị phạt vì lớp bị không xếp loại hay làm vườn trải nghiệm,..</p>
+                <p>Chúng ta đã cùng nhau trang trí lớp, đi trải nghiệm, tham gia nhiều hoạt động do Đoàn trường tổ chức như văn nghệ, ẩm thực,.. và còn nhiều hơn thế nữa.</p>
+                <p>Cảm ơn các bạn vì những nỗ lực, đóng góp cho tập thể lớp để mỗi chúng ta ngày càng phát triển hơn, cảm ơn vì đã cùng nhau vượt qua những khó khăn, thử thách để lớp chúng ta càng đoàn kết, yêu thương lẫn nhau hơn.</p>
+                <p class="highlight-text">Cảm ơn tất cả các bạn vì đã là một phần của tập thể 10/4 và 11/4 niên khóa 2024-2026!</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="imageLightbox" class="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img class="lightbox-img" id="lightboxTargetImg" src="" alt="Ảnh phóng to đầy đủ">
+    </div>
+
+    <footer class="main-footer">
+        <p>Được thực hiện bởi Tùng Dương - Lớp Trưởng Lớp 11/4</p>
+        <p>Tập thể lớp 10/4 - 11/4. Giữ mãi trong tim tình bạn này!</p>
+    </footer>
+
+    <script src="{% static 'home/script.js' %}"></script>
+</body>
+</html>

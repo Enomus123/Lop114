@@ -5,17 +5,258 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kỷ Niệm Tập Thể 10/4 - 11/4 ✨</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'home/img/favicon.ico' %}">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'home/style.css' %}">
+    <style>
+        /* =========================================================================
+           1. THIẾT KẾ BANNER TRÊN MÁY TÍNH (PC) - GIỮ NGUYÊN BẢN ĐẸP CỦA BẠN
+           ========================================================================= */
+        .main-header {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .main-header h1 {
+            color: #ffffff !important;
+            font-family: 'Quicksand', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 3.8rem !important;
+            -webkit-text-stroke: 2px #000000 !important;
+            text-stroke: 2px #000000 !important;
+            letter-spacing: 1px !important;
+            margin-bottom: 15px !important;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6) !important;
+            line-height: 1.25 !important;
+        }
+
+        .main-header .badge {
+            font-family: 'Quicksand', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 1.05rem !important;
+            background-color: #ffb703 !important;
+            color: #000000 !important;
+            padding: 6px 18px !important;
+            border-radius: 20px !important;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2) !important;
+            display: inline-block !important;
+            margin-bottom: 15px !important;
+        }
+
+        .main-header p {
+            color: #ffffff !important;
+            font-family: 'Quicksand', sans-serif !important;
+            font-weight: 700 !important;
+            font-style: italic !important;
+            font-size: 1.45rem !important;
+            -webkit-text-stroke: 0.8px #000000 !important;
+            text-stroke: 0.8px #000000 !important;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5) !important;
+            margin-top: 5px !important;
+            line-height: 1.4 !important;
+        }
+
+        /* =========================================================================
+           2. SỬA ĐIỆN THOẠI: NỀN Ô LY XANH PHẤN THANH XUÂN, ẢNH LỚP SÁNG RÕ 100%
+           ========================================================================= */
+        @media (max-width: 768px) {
+            .main-header {
+                height: auto !important;
+                min-height: auto !important;
+                background-size: contain !important;      /* Ảnh lớp co dãn vừa vặn, không mất một góc nào */
+                background-position: top center !important; /* Đẩy ảnh lên sát mép trên cùng */
+                background-color: #e0f2fe !important;     /* Nền màu xanh da trời nhạt cực kỳ thanh xuân */
+                display: flex !important;
+                flex-direction: column !important;
+            }
+            
+            /* Hộp chứa chữ dịch xuống dưới lề ảnh và biến thành trang tập học sinh màu xanh phấn */
+            .header-overlay {
+                position: relative !important;
+                /* Tạo nền giấy ô ly màu xanh phấn mộng mơ */
+                background-color: #f0f9ff !important; 
+                background-image: 
+                    linear-gradient(to right, rgba(14, 165, 233, 0.12) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(14, 165, 233, 0.12) 1px, transparent 1px) !important;
+                background-size: 22px 22px !important;    /* Ô ly nhỏ nhắn tinh tế trên mobile */
+                
+                /* Đường sọc lề đỏ nhẹ phân cách lề vở bên trái */
+                border-left: 3px solid rgba(239, 68, 68, 0.3) !important; 
+                border-top: 1px solid rgba(14, 165, 233, 0.15) !important;
+                
+                padding: 30px 20px 35px 25px !important;  
+                margin-top: 56vw !important;              /* Đẩy lùi hẳn xuống dưới chân ảnh, không chạm một pixel nào vào mặt các bạn */
+                text-align: center !important;
+                width: 100% !important;
+                box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.03) !important;
+            }
+
+            .main-header h1 {
+                font-size: 1.5rem !important;
+                color: #0369a1 !important;                /* Đổi chữ sang màu xanh dương đậm để nổi bật trên nền ô ly phấn */
+                -webkit-text-stroke: unset !important;    /* Bỏ viền đen thô trên điện thoại */
+                text-stroke: unset !important;
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.1) !important;
+                font-weight: 700 !important;
+                line-height: 1.3 !important;
+                margin-bottom: 12px !important;
+            }
+
+            .main-header .badge {
+                font-size: 0.85rem !important;
+                background-color: #f59e0b !important;     /* Màu cam nghệ ấm áp nổi bật */
+                color: #ffffff !important;
+                padding: 4px 14px !important;
+                margin-bottom: 12px !important;
+                box-shadow: 0 2px 4px rgba(245,158,11,0.2) !important;
+            }
+
+            .main-header p {
+                font-size: 0.95rem !important;
+                color: #0c4a6e !important;                /* Màu xanh mực viết học trò */
+                -webkit-text-stroke: unset !important;    /* Bỏ viền đen */
+                text-stroke: unset !important;
+                text-shadow: none !important;
+                padding: 0 5px !important;
+                line-height: 1.4 !important;
+                font-weight: 600 !important;
+            }
+        }
+
+        /* =========================================================================
+           3. CẤU HÌNH KHUNG KỶ NIỆM VÀ NỀN TẬP Ô LY (SẠCH SẼ - KHÔNG BĂNG KEO)
+           ========================================================================= */
+        .timeline-content {
+            position: relative;
+            background-color: #fcfbf7 !important;          /* Màu giấy ngà chống chói */
+            border: 1px solid #e1ded4 !important;          /* Viền xám tro mỏng tinh tế */
+            border-radius: 12px !important;
+            box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.04) !important;
+            padding: 20px !important;
+        }
+
+        .timeline-content .description {
+            font-family: 'Quicksand', sans-serif !important;
+            font-size: 1.15rem !important;
+            color: #1a1a1a !important;                    /* Chữ đen đậm rõ chữ trên nền ngà */
+            line-height: 1.7 !important;
+            font-weight: 500 !important;
+            margin-top: 15px !important;
+            text-align: justify !important;
+        }
+        
+        .timeline-content .description strong {
+            color: #e63946 !important;                    /* Điểm nhấn chữ màu đỏ nổi bật */
+        }
+
+        .timeline-line {
+            border-left: 3px dashed #ffb703 !important;   /* Nét đứt màu vàng ấm áp */
+            background: none !important;
+        }
+
+        /* =========================================================================
+           4. THIẾT KẾ BỨC THƯ LỜI KẾT & NỀN TẬP Ô LY TOÀN TRANG
+           ========================================================================= */
+        .letter-card {
+            border-left: 5px solid #e63946 !important;
+            background: #ffffff !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+            padding: 30px 25px !important;
+            border-radius: 12px !important;
+        }
+        
+        .letter-card h2 {
+            font-family: 'Quicksand', sans-serif !important;
+            color: #e63946 !important;
+            font-weight: 700 !important;
+            font-size: 1.6rem !important;
+            margin-bottom: 20px !important;
+            text-align: center !important;
+        }
+        
+        .letter-content-text p {
+            font-family: 'Quicksand', sans-serif !important;
+            font-size: 1.12rem !important;
+            color: #2b2b2b !important;
+            line-height: 1.8 !important;
+            font-weight: 500 !important;
+            margin-bottom: 16px !important;
+            text-align: justify !important;
+        }
+        
+        .letter-content-text p strong {
+            color: #1d3557 !important;
+            font-weight: 700 !important;
+        }
+        
+        .letter-content-text .highlight-text {
+            font-size: 1.25rem !important;
+            color: #e63946 !important;
+            font-weight: 700 !important;
+            text-align: center !important;
+            margin-top: 25px !important;
+            padding: 10px !important;
+            border-top: 1px dashed #e63946 !important;
+            line-height: 1.5 !important;
+        }
+
+        body {
+            background-color: #ffffff !important;
+            background-image: 
+                linear-gradient(to right, rgba(0, 180, 216, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 180, 216, 0.08) 1px, transparent 1px) !important;
+            background-size: 25px 25px !important;
+            background-attachment: fixed !important;
+        }
+
+        .leaf-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+        
+        .leaf {
+            position: absolute;
+            display: block;
+            width: 15px;
+            height: 15px;
+            background: #ffb703;
+            opacity: 0.7;
+            border-radius: 0 15px;
+            animation: fall 10s linear infinite;
+        }
+        
+        .leaf:nth-child(even) {
+            background: #e63946;
+            border-radius: 15px 0;
+        }
+        
+        @keyframes fall {
+            0% { top: -5%; transform: translateX(0) rotate(0deg); }
+            100% { top: 105%; transform: translateX(100px) rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-
     <header class="main-header">
         <div class="header-overlay">
-            <h1>Thanh Xuân Của Tập Thể Lớp 10/4 & 11/4</h1>
-            <span class="badge">Niên khóa 2024 - 2026</span>
-            <p>Nơi cất giữ những kỉ niệm đáng nhớ của chúng mình!</p>
+            <h1 class="stroke-text" style="color: #ffffff; font-weight: 700;">Thanh Xuân Của Tập Thể Lớp 10/4 - 11/4</h1>
+            
+            <div class="badge-wrapper">
+                <span class="badge">Niên khóa 2024 - 2026</span>
+            </div>
+            
+            <p class="creative-sub">
+                <span class="quote-mark">“</span>Nơi cất giữ những kỉ niệm đáng nhớ của chúng mình!<span class="quote-mark">”</span>
+            </p>
         </div>
     </header>
 
@@ -65,7 +306,7 @@
                 </div>
                 <div class="video-playlist-wrapper">
                     <div class="video-container">
-                        <iframe id="vid_trangtri10" src="https://www.youtube.com/embed/XQHrNgYNRBQ" frameborder="0" allowfullscreen></iframe>
+                        <iframe id="vid_trangtri10" width="560" height="315" src="https://www.youtube.com/embed/XQHrNgYNRBQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                     <div class="playlist-tabs">
                         <button class="tab-btn active" onclick="switchVideo('vid_trangtri10', 'XQHrNgYNRBQ', this)">Bắt đầu vẽ tranh</button>
@@ -125,7 +366,7 @@
                 </div>
                 <div class="video-playlist-wrapper">
                     <div class="video-container short-video">
-                        <iframe id="vid_trainghiem10" src="https://www.youtube.com/embed/sozZxzGj1_8" frameborder="0" allowfullscreen></iframe>
+                        <iframe id="vid_trainghiem10" width="560" height="315" src="https://www.youtube.com/embed/sozZxzGj1_8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                     <div class="playlist-tabs">
                         <button class="tab-btn active" onclick="switchVideo('vid_trainghiem10', 'sozZxzGj1_8', this)">Trước giờ khởi hành</button>
@@ -158,7 +399,7 @@
                 </div>
                 <div class="video-playlist-wrapper">
                     <div class="video-container">
-                        <iframe id="vid_vannghe10" src="https://www.youtube.com/embed/wRJTxwsMwrg" frameborder="0" allowfullscreen></iframe>
+                        <iframe id="vid_vannghe10" width="560" height="315" src="https://www.youtube.com/embed/wRJTxwsMwrg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
                 <p class="description">Các bạn ngại múa nhưng vẫn cố gắng hết sức để hoàn thành một tiết mục thật ý nghĩa.</p>
@@ -184,12 +425,12 @@
                     <div class="slider-counter">1 / 4</div>
                 </div>
                 <div class="video-playlist-wrapper">
-                    <div class="video-container" id="container_amthuc10">
-                        <iframe id="vid_amthuc10" src="https://www.youtube.com/embed/ifhWpd885PM" frameborder="0" allowfullscreen></iframe>
+                    <div class="video-container">
+                        <iframe id="vid_amthuc10" width="560" height="315" src="https://www.youtube.com/embed/ifhWpd885PM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                     <div class="playlist-tabs">
-                        <button class="tab-btn active" onclick="switchVideoWithRatio('vid_amthuc10', 'ifhWpd885PM', this, 'long')">Làm đồ trang trí 1</button>
-                        <button class="tab-btn" onclick="switchVideoWithRatio('vid_amthuc10', 'Lo-MjeF6Sxg', this, 'long')">Làm đồ trang trí 2</button>
+                        <button class="tab-btn active" onclick="switchVideoWithRatio('vid_amthuc10', 'ifhWpd885PM', this, 'normal')">Làm đồ trang trí 1</button>
+                        <button class="tab-btn" onclick="switchVideoWithRatio('vid_amthuc10', 'Lo-MjeF6Sxg', this, 'normal')">Làm đồ trang trí 2</button>
                         <button class="tab-btn" onclick="switchVideoWithRatio('vid_amthuc10', 'zednyUWfK6M', this, 'short')">Làm gian hàng 1</button>
                         <button class="tab-btn" onclick="switchVideoWithRatio('vid_amthuc10', 'ycrI0qX9iDc', this, 'short')">Làm gian hàng 2</button>
                     </div>
@@ -228,13 +469,13 @@
                 <span class="time-tag">Đầu năm học</span>
                 <h3>Trang Trí Lớp 11</h3>
                 <div class="video-playlist-wrapper">
-                    <div class="video-container" id="container_trangtri11">
-                        <iframe id="vid_trangtri11" src="https://www.youtube.com/embed/N02t22beCkY" frameborder="0" allowfullscreen></iframe>
+                    <div class="video-container">
+                        <iframe id="vid_trangtri11" width="560" height="315" src="https://www.youtube.com/embed/N02t22beCkY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                     <div class="playlist-tabs">
                         <button class="tab-btn active" onclick="switchVideoWithRatio('vid_trangtri11', 'N02t22beCkY', this, 'short')">Trang trí đầu năm 1</button>
-                        <button class="tab-btn" onclick="switchVideoWithRatio('vid_trangtri11', 'nWurlhGw_NA', this, 'long')">Trang trí đầu năm 2</button>
-                        <button class="tab-btn" onclick="switchVideoWithRatio('vid_trangtri11', 'm8PJR563Y-Q', this, 'long')">Trang trí đầu năm 3</button>
+                        <button class="tab-btn" onclick="switchVideoWithRatio('vid_trangtri11', 'nWurlhGw_NA', this, 'normal')">Trang trí đầu năm 2</button>
+                        <button class="tab-btn" onclick="switchVideoWithRatio('vid_trangtri11', 'm8PJR563Y-Q', this, 'normal')">Trang trí đầu năm 3</button>
                     </div>
                 </div>
             </div>
@@ -262,7 +503,7 @@
                 </div>
                 <div class="video-playlist-wrapper">
                     <div class="video-container short-video">
-                        <iframe src="https://www.youtube.com/embed/rxmefYST_S0" frameborder="0" allowfullscreen></iframe>
+                        <iframe id="vid_trian11" width="560" height="315" src="https://www.youtube.com/embed/rxmefYST_S0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
                 <p class="description">Rút kinh nghiệm từ năm trước, cả lớp tặng thầy 1 cái áo sơ mi và rủ thầy chụp ảnh lưu niệm.</p>
@@ -288,7 +529,7 @@
                 </div>
                 <div class="video-playlist-wrapper">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/jnmjJbNSCE4" frameborder="0" allowfullscreen></iframe>
+                        <iframe id="vid_nhackich11" width="560" height="315" src="https://www.youtube.com/embed/jnmjJbNSCE4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
                 <p class="description">Vì thấy không phù hợp với nhảy múa, các bạn đã cùng nhau thực hiện một tiết mục nhạc kịch. Cùng với sự cố gắng của cả tập thể lớp, tiết mục đã hoàn thành một cách trọn vẹn.</p>
@@ -305,7 +546,7 @@
                 </div>
                 <div class="video-playlist-wrapper">
                     <div class="video-container short-video">
-                        <iframe id="vid_amthuc11" src="https://www.youtube.com/embed/_5oUAyoi0KU" frameborder="0" allowfullscreen></iframe>
+                        <iframe id="vid_amthuc11" width="560" height="315" src="https://www.youtube.com/embed/_5oUAyoi0KU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                     <div class="playlist-tabs">
                         <button class="tab-btn active" onclick="switchVideo('vid_amthuc11', '_5oUAyoi0KU', this)">Clip 1</button>
@@ -321,7 +562,7 @@
             <div class="timeline-dot"><i class="fas fa-glass-cheers"></i></div>
             <div class="timeline-content">
                 <span class="time-tag">Tết sum vầy</span>
-                <h3>Vô Nhà Thầy Chủ Nhiệm Chơi</h3>
+                <h3>Vô Nhà Thầy Tân Chơi Tết</h3>
                 <div class="slider-wrapper">
                     <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
                     <div class="image-slider">
@@ -341,7 +582,7 @@
                 </div>
                 <div class="video-playlist-wrapper">
                     <div class="video-container short-video">
-                        <iframe id="vid_nhathay" src="https://www.youtube.com/embed/5saH2Lpq6U0" frameborder="0" allowfullscreen></iframe>
+                        <iframe id="vid_nhathay" width="560" height="315" src="https://www.youtube.com/embed/5saH2Lpq6U0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                     <div class="playlist-tabs">
                         <button class="tab-btn active" onclick="switchVideo('vid_nhathay', '5saH2Lpq6U0', this)">Các bạn cùng nhau chuẩn bị đồ ăn</button>
@@ -373,7 +614,7 @@
                 </div>
                 <div class="video-playlist-wrapper">
                     <div class="video-container short-video">
-                        <iframe id="vid_trainghiem11" src="https://www.youtube.com/embed/yApI11No6E8" frameborder="0" allowfullscreen></iframe>
+                        <iframe id="vid_trainghiem11" width="560" height="315" src="https://www.youtube.com/embed/yApI11No6E8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                     <div class="playlist-tabs">
                         <button class="tab-btn active" onclick="switchVideo('vid_trainghiem11', 'yApI11No6E8', this)">Trước khi đi</button>
@@ -398,23 +639,23 @@
         </div>
     </main>
 
-    <section class="love-section">
-        <h3>Gửi Yêu Thương Đến Tập Thế Lớp ❤️</h3>
-        <button id="heartBtn" class="heart-button"><i class="fas fa-heart"></i> Thả Tim Ngay</button>
-        <p id="counter">Đã tích lũy được <span id="count">0</span> lượt tim thương yêu.</p>
-    </section>
-
     <section class="letter-section">
         <div class="letter-card">
             <div class="letter-icon"><i class="fas fa-envelope-open-text"></i></div>
             <h2>Gửi Tập Thể Lớp Thân Yêu...</h2>
             <div class="letter-content-text">
-                <p>2 năm chẳng ngắn cũng chẳng dài, chúng ta đã cùng nhau trải qua những tiết học thật vui nhộn nhưng đôi khi lại vô cùng căng thẳng (tiết ngữ văn), những giờ kiểm tra, những trò chơi tập thể như đá cầu, nhảy dây, ma sói,... những buổi lao động bị phạt vì lớp bị không xếp loại hay làm vườn trải nghiệm,..</p>
+                <p>2 năm chẳng ngắn cũng chẳng dài, chúng ta đã cùng nhau trải qua những tiết học thật vui nhộn nhưng đôi khi lại vô cùng căng thẳng <strong>(sợ nhất là tiết ngữ văn ^-^)</strong>, những giờ kiểm tra, những trò chơi tập thể như đá cầu, nhảy dây, ma sói,... những buổi lao động bị phạt vì lớp bị không xếp loại hay làm vườn trải nghiệm,..</p>
                 <p>Chúng ta đã cùng nhau trang trí lớp, đi trải nghiệm, tham gia nhiều hoạt động do Đoàn trường tổ chức như văn nghệ, ẩm thực,.. và còn nhiều hơn thế nữa.</p>
                 <p>Cảm ơn các bạn vì những nỗ lực, đóng góp cho tập thể lớp để mỗi chúng ta ngày càng phát triển hơn, cảm ơn vì đã cùng nhau vượt qua những khó khăn, thử thách để lớp chúng ta càng đoàn kết, yêu thương lẫn nhau hơn.</p>
                 <p class="highlight-text">Cảm ơn tất cả các bạn vì đã là một phần của tập thể 10/4 và 11/4 niên khóa 2024-2026!</p>
             </div>
         </div>
+    </section>
+
+    <section class="love-section">
+        <h3>Gửi Yêu Thương Đến Tập Thế Lớp ❤️</h3>
+        <button id="heartBtn" class="heart-button"><i class="fas fa-heart"></i> Thả Tim Ngay</button>
+        <p id="counter">Đã tích lũy được <span id="count">0</span> lượt tim thương yêu.</p>
     </section>
 
     <div id="imageLightbox" class="lightbox">
@@ -426,7 +667,13 @@
         <p>Được thực hiện bởi Tùng Dương - Lớp Trưởng Lớp 11/4</p>
         <p>Tập thể lớp 10/4 - 11/4. Giữ mãi trong tim tình bạn này!</p>
     </footer>
-
     <script src="{% static 'home/script.js' %}"></script>
+    <div class="leaf-container">
+        <div class="leaf" style="left: 10%; animation-delay: 0s; animation-duration: 12s;"></div>
+        <div class="leaf" style="left: 30%; animation-delay: 2s; animation-duration: 9s;"></div>
+        <div class="leaf" style="left: 55%; animation-delay: 4s; animation-duration: 15s;"></div>
+        <div class="leaf" style="left: 75%; animation-delay: 1s; animation-duration: 10s;"></div>
+        <div class="leaf" style="left: 90%; animation-delay: 6s; animation-duration: 11s;"></div>
+    </div>
 </body>
 </html>

@@ -19,7 +19,7 @@ body {
 /* --- MAIN HEADER --- */
 .main-header {
     background: linear-gradient(rgba(42, 111, 151, 0.4), rgba(43, 58, 66, 0.6));
-    background-image: url('img/bg.jpg');
+    background-image: url('/static/home/img/bg.jpg');
     background-size: cover;
     background-position: center;
     height: 55vh;
@@ -284,4 +284,75 @@ body {
         box-shadow: 0 15px 35px rgba(42, 111, 151, 0.1);
     }
     .letter-card { max-width: 750px; padding: 40px; }
+}
+/* Thiết kế tờ giấy Note */
+.sticky-note {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 2px; /* Góc hơi vuông kiểu giấy ghi chú */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    transform: rotate(-1deg); /* Nghiêng nhẹ cho giống giấy dán */
+    position: relative;
+    transition: transform 0.2s;
+}
+.sticky-note:nth-child(even) { transform: rotate(1deg); } /* Xen kẽ chiều nghiêng */
+.sticky-note:hover { transform: rotate(0deg) scale(1.02); } /* Hiệu ứng khi di chuột vào */
+
+/* Các màu sắc giấy */
+.note-yellow { background-color: #fef9c3; }
+.note-blue   { background-color: #dbeafe; }
+.note-pink   { background-color: #fce7f3; }
+.note-green  { background-color: #dcfce7; }
+.note-purple { background-color: #ede9fe; }
+.note-orange  { background-color: #ffedd5; }
+.note-red     { background-color: #fee2e2; }
+.notebook-background {
+    background-color: #f7f7f7;
+    background-image: 
+        linear-gradient(#cce5ff 1px, transparent 1px),
+        linear-gradient(90deg, #cce5ff 1px, transparent 1px);
+    background-size: 25px 25px; /* Độ rộng ô li */
+    min-height: 100vh;
+    padding: 20px;
+}
+/* Thêm vào cuối file style.css */
+.note-content {
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Font kiểu chữ viết tay */
+    font-size: 16px;
+}
+/* Tăng kích thước chữ tổng thể */
+body {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px; /* Tăng cỡ chữ cơ bản */
+    line-height: 1.6; /* Tăng khoảng cách dòng để dễ đọc hơn */
+    color: var(--text-color);
+}
+
+/* Định dạng cho nội dung trong tờ giấy note */
+.sticky-note {
+    padding: 20px;
+    margin-bottom: 20px;
+    font-size: 1.1rem; /* Chữ to hơn một chút */
+    line-height: 1.5;
+}
+
+.sticky-note b {
+    display: block;
+    font-size: 1.3rem; /* Tên người gửi nổi bật */
+    margin-bottom: 8px;
+    color: #000;
+}
+
+/* Tối ưu cho điện thoại */
+@media (max-width: 600px) {
+    body {
+        font-size: 16px; /* Chữ vừa vặn trên điện thoại */
+    }
+    .sticky-note {
+        padding: 15px;
+        font-size: 1rem;
+    }
+    h2 {
+        font-size: 1.8rem; /* Tiêu đề vẫn phải lớn */
+    }
 }

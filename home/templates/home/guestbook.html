@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Sổ Lưu Bút </title>
+    <link rel="stylesheet" href="{% static 'home/style.css' %}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📓</text></svg>">
+</head>
+<body style="background: var(--bg-color); padding: 20px;">
+    <a href="/" style="text-decoration: none; color: var(--primary-color);">← Quay lại trang chủ</a>
+
+    <div style="max-width: 600px; margin: 20px auto; text-align: center;">
+        <h2>Sổ Lưu Bút Lớp 11/4</h2>
+        
+        <button id="toggleBtn" style="padding: 10px 20px; background: var(--primary-color); color: white; border: none; border-radius: 5px; cursor: pointer;">
+            + Viết lời nhắn mới (Chưa hoạt động)
+        </button>
+
+        <div id="messageForm" style="display: none; margin-top: 20px; padding: 20px; background: white; border-radius: 10px;">
+            <input type="text" id="userName" placeholder="Tên của bạn..." style="width: 100%; padding: 10px; margin-bottom: 10px;">
+            <textarea id="userMessage" placeholder="Viết lời nhắn..." style="width: 100%; height: 60px; padding: 10px;"></textarea>
+            <button id="sendBtn" style="padding: 10px 20px; background: green; color: white; border: none; border-radius: 5px; cursor: pointer;">Gửi đi</button>
+        </div>
+
+        <div id="messagesList" style="margin-top: 30px; text-align: left;"></div>
+    </div>
+    <div id="messagesList" style="margin-top: 30px; text-align: left;">
+    <div class="sticky-note note-yellow">
+        <hr style="border:0; border-top:1px dashed #ccc; margin: 5px 0;">
+        <p style="margin:5px 0 0 0; color:#555;">Chào mừng các bạn đến với sổ lưu bút online của lớp 11/4! Hãy chia sẽ những kỷ niệm đẹp của bạn về lớp chúng ta hoặc để lại lời nhắn cho các bạn nhé! ❤️</p>
+    </div>
+    
+    <div class="sticky-note note-blue">
+        <hr style="border:0; border-top:1px dashed #ccc; margin: 5px 0;">
+        <p style="margin:5px 0 0 0; color:#555;">Tính năng gửi tin nhắn đang trong giai đoạn phát triển, các bạn hãy chờ đón bản cập nhật mới nhất nhé!</p>
+    </div>
+        <div class="sticky-note note-red">
+        <p style="margin:0; font-weight:bold; color:#333;">Tùng Dương</p>
+        <hr style="border:0; border-top:1px dashed #ccc; margin: 5px 0;">
+        <p style="margin:5px 0 0 0; color:#555;">Được làm lớp trưởng của lớp chúng ta là một trải nghiệm thật đáng nhớ đối với tui. Đó là những lần nhắc nhở các bạn phải tuân theo nội quy để không bị phạt lao động, là những buổi lao động tuy mệt mà lại vui, là niềm vui to lớn khi lần đầu được cờ thi đua nhất tuần và là những kỷ niệm về những buổi trò chuyện, ca hát vui vẻ cùng các bạn. Cảm ơn các bạn vì đã đồng hành cùng tui trong 2 năm vừa qua. Chúc các bạn có thật nhiều sức khỏe, ngày càng rèn luyện phát triển bản thân hơn nữa để đạt được một kết quả thật tốt trong kì thi THPTQG 2027 ^-^</p>
+    </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-database-compat.js"></script>
+    <script type="module" src="{% static 'home/script.js' %}"></script>
+    <script>
+        function toggleForm() {
+            const form = document.getElementById('messageForm');
+            form.style.display = (form.style.display === 'none') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

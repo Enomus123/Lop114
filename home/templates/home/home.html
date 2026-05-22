@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kỷ Niệm Tập Thể 10/4 - 11/4 ✨</title>
+    <title>Kỷ Niệm Tập Thể Lớp 10/4 - 11/4 ✨</title>
     <link rel="icon" type="image/x-icon" href="{% static 'home/img/favicon.ico' %}">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -651,7 +651,11 @@
             </div>
         </div>
     </section>
-
+    <div style="text-align: center; margin: 40px 0;">
+    <a href="/guestbook" style="padding: 15px 30px; background: var(--primary-color); color: white; text-decoration: none; border-radius: 30px; font-size: 1.2em; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        📖 Ghé thăm Sổ Lưu Bút của lớp mình
+    </a>
+    </div>
     <section class="love-section">
         <h3>Gửi Yêu Thương Đến Tập Thể Lớp ❤️</h3>
         <button id="heartBtn" class="heart-button"><i class="fas fa-heart"></i> Thả Tim Ngay</button>
@@ -667,7 +671,6 @@
         <p>Được thực hiện bởi Tùng Dương - Lớp Trưởng của các bạn ❤️</p>
         <p>Tập thể lớp 10/4 - 11/4. Giữ mãi trong tim tình bạn này!</p>
     </footer>
-    <script src="{% static 'home/script.js' %}"></script>
     <div class="leaf-container">
         <div class="leaf" style="left: 10%; animation-delay: 0s; animation-duration: 12s;"></div>
         <div class="leaf" style="left: 30%; animation-delay: 2s; animation-duration: 9s;"></div>
@@ -675,5 +678,6 @@
         <div class="leaf" style="left: 75%; animation-delay: 1s; animation-duration: 10s;"></div>
         <div class="leaf" style="left: 90%; animation-delay: 6s; animation-duration: 11s;"></div>
     </div>
+    <script type="module" src="{% static 'home/script.js' %}"></script>
 </body>
 </html>

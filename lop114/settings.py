@@ -80,10 +80,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': '#Enomus123@',
-        'HOST': 'db.xxmatydtlrkaxtlxsydd.supabase.co',
-        'PORT': '5432',
+        'USER': 'postgres.xxmatydtlrkaxtlxsydd',
+        'PASSWORD': '#Enomus123@',  # <-- Điền mật khẩu thật của bạn vào đây
+        'HOST': 'aws-0-ap-southeast-1.pooler.supabase.com', # <-- Đã đổi sang host Pooler IPv4
+        'PORT': '6543',                                    # <-- Đã đổi sang cổng kết nối 6543
+        'OPTIONS': {
+            'sslmode': 'require',
+        }
     }
 }
 

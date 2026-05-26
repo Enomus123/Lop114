@@ -137,37 +137,51 @@ document.addEventListener("DOMContentLoaded", function() {
     // ==========================================
     const heartBtn = document.getElementById('heartBtn');
     const countSpan = document.getElementById('count');
-    
-    if (heartBtn && countSpan) {
-        let heartCount = localStorage.getItem('classHeartCount') || 0;
-        countSpan.innerText = heartCount;
 
+    if (heartBtn && countSpan) {
         heartBtn.addEventListener('click', function() {
-            heartCount++;
-            countSpan.innerText = heartCount;
-            localStorage.setItem('classHeartCount', heartCount);
-            createFloatingHeart();
+            // Lấy token bảo mật CSRF được đính kèm ở thuộc tính dữ liệu của nút bấm
+            const csrfToken = heartBtn.getAttribute('data-csrf');
+
+            // Gửi yêu cầu tăng tim lên hệ thống Django backend xử lý dữ liệu tập trung
+            fetch('/tang-luot-tim/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': csrfToken,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Cập nhật số tim mới nhất được trả về đồng bộ từ cơ sở dữ liệu
+                    countSpan.textContent = data.so_luot_tim;
+                    
+                    // Kích hoạt hiệu ứng bong bóng tim bay lên lãng mạn
+                    createFloatingHeart();
+                }
+            })
+            .catch(error => console.error('Lỗi khi hệ thống thực hiện thả tim:', error));
         });
     }
 
-    function createFloatingHeart() {
-        const heart = document.createElement('i');
-        heart.classList.add('fas', 'fa-heart');
-        heart.style.position = 'fixed';
-        heart.style.color = 'var(--heart-color)';
-        heart.style.left = (window.innerWidth / 2 + (Math.random() * 60 - 30)) + 'px';
-        heart.style.bottom = '80px';
-        heart.style.opacity = '1';
-        heart.style.zIndex = '9999';
-        heart.style.transition = 'all 1s ease-out';
-        
-        document.body.appendChild(heart);
-        
-        setTimeout(() => {
-            heart.style.transform = `translateY(-120px) scale(1.4)`;
-            heart.style.opacity = '0';
-        }, 50);
-        
-        setTimeout(() => { heart.remove(); }, 1050);
-    }
 });
+// Hàm tạo hiệu ứng tim bay (giữ nguyên hoặc bổ sung nếu bạn muốn)
+function createFloatingHeart() {
+    const heart = document.createElement('div');
+    heart.innerHTML = '❤️';
+    heart.style.position = 'fixed';
+    heart.style.bottom = '20%';
+    // Tạo vị trí ngẫu nhiên xung quanh khu vực nút bấm để tim bay tự nhiên
+    heart.style.left = (Math.random() * 40 + 30) + '%';
+    heart.style.fontSize = '1.5rem';
+    heart.style.animation = 'flyUp 1s ease-out forwards';
+    heart.style.pointerEvents = 'none';
+    heart.style.zIndex = '9999';
+    document.body.appendChild(heart);
+    
+    // Tự động xóa tim sau 1 giây khi hiệu ứng kết thúc để giải phóng bộ nhớ máy tính
+    setTimeout(() => { 
+        heart.remove(); 
+    }, 1000);
+}

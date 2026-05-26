@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lưu Bút Kỷ Niệm - Lớp 11/4</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" type="image/png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #2b7a78;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff; 
+            background-image: 
+                linear-gradient(to right, rgba(0, 168, 204, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 168, 204, 0.15) 1px, transparent 1px);
+            background-size: 30px 30px; 
+            font-family: 'Quicksand', sans-serif;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* --- HIỆU ỨNG LÁ RƠI --- */
+        .leaves-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
+        .leaf { position: absolute; top: -50px; color: #3a9a98; opacity: 0.6; font-size: 1.5rem; animation: fall linear infinite; }
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(105vh) translateX(100px) rotate(360deg); opacity: 0; }
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 10; }
+        .back-btn { display: inline-block; text-decoration: none; color: var(--primary-color); font-weight: bold; margin-bottom: 20px; transition: 0.3s; }
+        .back-btn:hover { transform: translateX(-5px); }
+
+        .header-title { text-align: center; color: var(--primary-color); font-size: 2.5rem; margin-bottom: 10px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+        .header-sub { text-align: center; color: #555; font-weight: 500; margin-bottom: 40px; }
+
+        .form-container { max-width: 550px; margin: 0 auto 50px auto; background: #ffffff; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 2px dashed #3a9a98; }
+        .form-group { margin-bottom: 20px; position: relative; }
+        .form-control { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Quicksand', sans-serif; font-size: 1rem; font-weight: 500; box-sizing: border-box; outline: none; transition: 0.3s; }
+        .form-control:focus { border-color: var(--primary-color); box-shadow: 0 0 8px rgba(43, 122, 120, 0.2); }
+        textarea.form-control { resize: none; padding-right: 45px; } 
+        
+        /* --- NÚT KÍCH HOẠT EMOJI Ở GÓC PHẢI KHUNG CHỮ --- */
+        .emoji-toggle-btn {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: #718096;
+            cursor: pointer;
+            transition: transform 0.2s, color 0.2s;
+            outline: none;
+            z-index: 5;
+        }
+        .emoji-toggle-btn:hover {
+            transform: scale(1.2);
+            color: var(--primary-color);
+        }
+
+        /* --- KHU VỰC EMOJI PICKER (MẶC ĐỊNH ẨN) --- */
+        .emoji-picker-container {
+            display: none; 
+            margin-top: -10px;
+            margin-bottom: 20px;
+            background: #fdfdfd;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            animation: fadeIn 0.2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .emoji-group-title {
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: #718096;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .emoji-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        .emoji-group:last-child { margin-bottom: 0; }
+        .emoji-btn {
+            font-size: 1.35rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 4px;
+            border-radius: 6px;
+            transition: transform 0.15s ease, background 0.15s ease;
+            line-height: 1;
+        }
+        .emoji-btn:hover {
+            transform: scale(1.3) rotate(5deg);
+            background: #e6f7f6;
+        }
+
+        .submit-btn { width: 100%; background: var(--primary-color); color: white; border: none; padding: 14px; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(43, 122, 120, 0.2); }
+        .submit-btn:hover { background: #1f5957; transform: translateY(-2px); }
+
+        /* --- BỨC TƯỜNG GIẤY NOTE CÂN ĐỐI BẰNG CSS GRID --- */
+        .notes-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Điện thoại xếp 1 cột dọc xuôi */
+            gap: 30px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Khi màn hình lớn như MÁY TÍNH / LAPTOP */
+        @media (min-width: 768px) {
+            .notes-grid {
+                grid-template-columns: repeat(3, 1fr); /* Tự chia thành 3 cột nằm ngang thẳng hàng */
+                align-items: start; /* Giữ nguyên chiều cao tự nhiên của các note, không bị kéo dài */
+            }
+        }
+
+        .note-card {
+            padding: 25px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: #111;
+            box-sizing: border-box;
+            border-radius: 4px;
+            
+            /* Đảm bảo note luôn chiếm hết không gian cột được giao */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .note-card:nth-child(even) { transform: rotate(1.5deg); }
+        .note-card:nth-child(odd) { transform: rotate(-1.5deg); }
+        .note-card:nth-child(3n) { transform: rotate(2deg); }
+        .note-card:hover { transform: scale(1.05) rotate(0deg) !important; box-shadow: 10px 15px 30px rgba(0,0,0,0.15) !important; z-index: 20; }
+
+        /* 10 màu sắc giấy note */
+        .c-1 { background: #fffca3; border-bottom-right-radius: 40px 5px; box-shadow: 3px 5px 15px rgba(230, 200, 0, 0.25); } 
+        .c-2 { background: #ffcfe2; border-bottom-right-radius: 5px 40px; box-shadow: 3px 5px 15px rgba(230, 100, 150, 0.25); }   
+        .c-3 { background: #bceeff; border-bottom-right-radius: 35px 6px; box-shadow: 3px 5px 15px rgba(0, 150, 230, 0.25); }  
+        .c-4 { background: #baffc9; border-bottom-right-radius: 6px 35px; box-shadow: 3px 5px 15px rgba(0, 200, 100, 0.25); }
+        .c-5 { background: #ffd1b3; border-bottom-right-radius: 38px 7px; box-shadow: 3px 5px 15px rgba(255, 100, 0, 0.25); }
+        .c-6 { background: #e8cfff; border-bottom-right-radius: 7px 38px; box-shadow: 3px 5px 15px rgba(150, 0, 255, 0.25); }
+        .c-7 { background: #ffeaa7; border-bottom-right-radius: 30px 8px; box-shadow: 3px 5px 15px rgba(215, 160, 0, 0.25); }
+        .c-8 { background: #9bf6ff; border-bottom-right-radius: 8px 30px; box-shadow: 3px 5px 15px rgba(0, 200, 200, 0.25); }
+        .c-9 { background: #ffadad; border-bottom-right-radius: 33px 5px; box-shadow: 3px 5px 15px rgba(255, 50, 50, 0.25); }
+        .c-10 { background: #caffbf; border-bottom-right-radius: 5px 33px; box-shadow: 3px 5px 15px rgba(50, 200, 50, 0.25); }
+
+        .note-card::before { content: ""; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); width: 50px; height: 15px; background-color: rgba(255,255,255,0.7); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+
+        .note-card > div { display: flex; flex-direction: column; }
+        .note-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; border-bottom: 2px dashed rgba(0,0,0,0.1); padding-bottom: 5px; }
+        .note-sender { font-size: 1.2rem; font-weight: 800; color: #1a252f; margin: 0; }
+        
+        .note-actions a { color: #555; text-decoration: none; margin-left: 10px; font-size: 0.9rem; transition: 0.2s; display: inline-block; }
+        .note-actions a:hover { color: #e74c3c; transform: scale(1.2); }
+
+        .note-content { font-size: 0.98rem; line-height: 1.6; color: #000; font-weight: 600; margin: 0 0 15px 0; white-space: pre-wrap; word-wrap: break-word; }
+        .note-img { width: 100%; height: auto; max-height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display: block; }
+        .note-time { font-size: 0.78rem; color: #555; font-weight: 700; text-align: right; display: block; margin-top: 5px; }
+        /* --- GIAO DIỆN KHUNG PHÓNG TO ẢNH (LIGHTBOX) --- */
+        /* Đổi con trỏ chuột thành kính lúp khi rà vào ảnh để báo hiệu click được */
+        .note-img {
+            cursor: zoom-in;
+            transition: opacity 0.2s;
+        }
+        .note-img:hover {
+            opacity: 0.9;
+        }
+
+        .image-lightbox {
+            display: none; /* Mặc định ẩn */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); /* Nền tối mờ */
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.25s ease-out;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+            transform: scale(0.9);
+            animation: zoomIn 0.25s ease-out forwards;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.25);
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+            to { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="image-lightbox" id="image_lightbox">
+        <span class="lightbox-close" id="lightbox_close">&times;</span>
+        <img class="lightbox-content" id="lightbox_img" src="" alt="Ảnh phóng to">
+    </div>
+    <div class="leaves-container" id="leaves"></div>
+
+    <div class="container">
+        <a href="/" class="back-btn"><i class="fas fa-arrow-left"></i> Trở về Trang Chủ</a>
+
+        <h1 class="header-title"><i class="fas fa-book-open"></i> Lưu Bút Online Của Lớp Mình</h1>
+        <p class="header-sub">Nơi bạn có thể chia sẻ về những kỉ niệm đáng nhớ mà chúng ta đã cùng nhau trải qua hoặc trao nhau những lời chúc tốt đẹp!❤️</p>
+
+        <div class="form-container">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" name="ho_ten" class="form-control" placeholder="Tên hoặc Biệt danh của bạn..." required>
+                </div>
+                
+                <div class="form-group">
+                    <textarea id="noi_dung_input" name="noi_dung" class="form-control" rows="4" placeholder="Viết vài dòng cho lớp mình nhé..." required></textarea>
+                    <button type="button" class="emoji-toggle-btn" id="emoji_toggle_btn" title="Chèn biểu tượng cảm xúc">
+                        <i class="far fa-smile"></i>
+                    </button>
+                </div>
+                
+                <div class="emoji-picker-container" id="emoji_picker">
+                    <div class="emoji-group-title">❤️ Thân thương & Cảm xúc</div>
+                    <div class="emoji-group">
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('❤️')">❤️</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('💖')">💖</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('✨')">✨</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🥰')">🥰</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🥺')">🥺</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('😭')">😭</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🫶')">🫶</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🌹')">🌹</button>
+                    </div>
+
+                    <div class="emoji-group-title">🤣 Vui nhộn & Lầy lội</div>
+                    <div class="emoji-group">
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🤣')">🤣</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🤡')">🤡</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('😎')">😎</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🤫')">🤫</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('👍')">👍</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🔥')">🔥</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('👑')">👑</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('☠️')">☠️</button>
+                    </div>
+
+                    <div class="emoji-group-title">🌸 Đáng yêu & Con vật</div>
+                    <div class="emoji-group">
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🌸')">🌸</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🍀')">🍀</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🐧')">🐧</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🐱')">🐱</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🧸')">🧸</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🐥')">🐥</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('☁️')">☁️</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🌈')">🌈</button>
+                    </div>
+
+                    <div class="emoji-group-title">🎓 Kỷ niệm & Học đường</div>
+                    <div class="emoji-group">
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🎓')">🎓</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('📚')">📚</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('📝')">📝</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🏫')">🏫</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('📸')">📸</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🥳')">🥳</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('💪')">💪</button>
+                        <button type="button" class="emoji-btn" onclick="insertEmoji('🎯')">🎯</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 700; color: var(--primary-color); font-size: 0.95rem;">
+                        <i class="fas fa-image"></i> Tải ảnh từ máy lên (Không bắt buộc):
+                    </label>
+                    <input type="file" name="hinh_anh" class="form-control" accept="image/*" style="padding: 8px;">
+                </div>
+                <button type="submit" class="submit-btn"><i class="fas fa-heart"></i> Dán Lên Bức Tường Kỷ Niệm</button>
+            </form>
+        </div>
+
+        <div class="notes-grid">
+            {% for item in danh_sach_luu_but %}
+                <div class="note-card {% cycle 'c-1' 'c-2' 'c-3' 'c-4' 'c-5' 'c-6' 'c-7' 'c-8' 'c-9' 'c-10' %}">
+                    <div>
+                        <div class="note-header">
+                            <h3 class="note-sender"><i class="fas fa-user-pin" style="font-size: 1rem; opacity: 0.8;"></i> {{ item.ho_ten }}</h3>
+                            <div class="note-actions">
+                                <a href="{% url 'sua_luu_but' item.id %}" title="Sửa"><i class="fas fa-pen"></i></a>
+                                <a href="{% url 'xoa_luu_but' item.id %}" onclick="return confirm('Bạn có chắc chắn muốn xóa kỷ niệm này không?');" title="Xóa"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </div>
+                        
+                        {% if item.hinh_anh %}
+                            <img src="{{ item.hinh_anh }}" alt="Kỷ niệm" class="note-img clickable-img" onerror="this.style.display='none'">
+                        {% endif %}
+                        
+                        <p class="note-content">{{ item.noi_dung }}</p>
+                    </div>
+                    <span class="note-time"><i class="far fa-clock"></i> {{ item.ngay_tao|date:"d/m/Y H:i" }}</span>
+                </div>
+            {% empty %}
+                <div style="text-align: center; color: #7f8c8d; margin-top: 20px; width: 100%; display: block; grid-column: 1 / -1;">
+                    <p style="font-size: 1.2rem; font-weight: bold;">Bức tường đang trống... 📝</p>
+                    <p>Hãy là người đầu tiên để lại những dòng lưu bút yêu thương!</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        /* --- LOGIC ĐÓNG BẬT BẢNG CHỌN EMOJI --- */
+        const emojiToggleBtn = document.getElementById('emoji_toggle_btn');
+        const emojiPicker = document.getElementById('emoji_picker');
+
+        emojiToggleBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); 
+            if (emojiPicker.style.display === 'block') {
+                emojiPicker.style.display = 'none';
+            } else {
+                emojiPicker.style.display = 'block';
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!emojiPicker.contains(e.target) && e.target !== emojiToggleBtn && !emojiToggleBtn.contains(e.target)) {
+                emojiPicker.style.display = 'none';
+            }
+        });
+
+        /* --- HÀM CHÈN EMOJI --- */
+        function insertEmoji(emoji) {
+            const textarea = document.getElementById('noi_dung_input');
+            const startPos = textarea.selectionStart;
+            const endPos = textarea.selectionEnd;
+            
+            textarea.value = textarea.value.substring(0, startPos) + emoji + textarea.value.substring(endPos, textarea.value.length);
+            
+            textarea.focus();
+            textarea.selectionStart = startPos + emoji.length;
+            textarea.selectionEnd = startPos + emoji.length;
+        }
+
+        /* --- HIỆU ỨNG LÁ RƠI --- */
+        const leavesContainer = document.getElementById('leaves');
+        const leafIcons = ['🍁', '🍃', '🍂']; 
+        function createLeaf() {
+            const leaf = document.createElement('div');
+            leaf.classList.add('leaf');
+            leaf.innerText = leafIcons[Math.floor(Math.random() * leafIcons.length)];
+            leaf.style.left = Math.random() * 100 + 'vw';
+            leaf.style.fontSize = (Math.random() * 15 + 15) + 'px'; 
+            const duration = Math.random() * 5 + 6; 
+            leaf.style.animationDuration = duration + 's';
+            leavesContainer.appendChild(leaf);
+            setTimeout(() => { leaf.remove(); }, duration * 1000);
+        }
+        setInterval(createLeaf, 600);
+        /* --- LOGIC XỬ LÝ PHÓNG TO HÌNH ẢNH (LIGHTBOX) --- */
+        const lightbox = document.getElementById('image_lightbox');
+        const lightboxImg = document.getElementById('lightbox_img');
+        const lightboxClose = document.getElementById('lightbox_close');
+        const clickableImages = document.querySelectorAll('.clickable-img');
+
+        // Khi click vào bất kỳ hình ảnh nào có class clickable-img
+        clickableImages.forEach(img => {
+            img.addEventListener('click', function() {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = this.src; // Gán nguồn ảnh sang khung phóng to
+            });
+        });
+
+        // Đóng khi bấm vào nút dấu X
+        lightboxClose.addEventListener('click', function() {
+            lightbox.style.display = 'none';
+        });
+
+        // Đóng khi bấm vào vùng nền đen bên ngoài ảnh
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

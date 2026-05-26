@@ -651,11 +651,16 @@
             </div>
         </div>
     </section>
-
+    <div style="text-align: center; margin: 40px 0;">
+        <p style="font-family: 'Quicksand', sans-serif; color: #666; font-style: italic;">Bạn có điều muốn nhắn nhủ tới tập thể lớp mình không?</p>
+        <a href="{% url 'luu_but_page' %}" style="display: inline-block; background: linear-gradient(135deg, #2b7a78, #3a9a98); color: white; text-decoration: none; padding: 15px 35px; font-size: 1.1rem; font-weight: bold; border-radius: 50px; box-shadow: 0 4px 15px rgba(43, 122, 120, 0.3); font-family: 'Quicksand', sans-serif; transition: all 0.3s ease;">
+            <i class="fas fa-book-open"></i> Lưu bút của lớp chúng ta ❤️
+        </a>
+    </div>
     <section class="love-section">
         <h3>Gửi Yêu Thương Đến Tập Thể Lớp ❤️</h3>
-        <button id="heartBtn" class="heart-button"><i class="fas fa-heart"></i> Thả Tim Ngay</button>
-        <p id="counter">Đã tích lũy được <span id="count">0</span> lượt tim thương yêu.</p>
+        <button id="heartBtn" class="heart-button" data-csrf="{{ csrf_token }}"><i class="fas fa-heart"></i> Thả Tim Ngay</button>
+        <p id="counter">Đã tích lũy được <span id="count">{{ so_luot_tim|default:0 }}</span> lượt tim thương yêu.</p>
     </section>
 
     <div id="imageLightbox" class="lightbox">

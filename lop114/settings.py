@@ -76,14 +76,17 @@ WSGI_APPLICATION = 'lop114.wsgi.application'
 
 import dj_database_url
 
+# =========================================================================
+# CẤU HÌNH DATABASE KHỚP HOÀN TOÀN 100% VỚI TRANSACTON POOLER CỦA BẠN
+# =========================================================================
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': '#Enomus123@',  # <-- Điền mật khẩu thật của bạn vào đây
-        'HOST': 'aws-0-ap-southeast-1.pooler.supabase.com', # <-- Đã đổi sang host Pooler IPv4
-        'PORT': '6543',                                    # <-- Đã đổi sang cổng kết nối 6543
+        'USER': 'postgres.xxmatydtlrkaxtlxsydd',              # <-- Chuẩn xác
+        'HOST': 'aws-1-ap-southeast-1.pooler.supabase.com',  # <-- Đã đổi thành aws-1 chuẩn của bạn!
+        'PORT': '6543',                                      # <-- Cổng Pooler IPv4
+        'PASSWORD': '#Enomus123@',                           # <-- Mật khẩu của bạn
         'OPTIONS': {
             'sslmode': 'require',
         }
